@@ -17,7 +17,10 @@ const taskSchema = new mongoose.Schema({
   // Status
   status: { type: String, enum: ['Pending', 'Completed', 'Missed'], default: 'Pending' },
   category: { type: String, enum: ['Health','Academics','Fun','Chores','Other'] },
-  priority: { type: String, enum: ['Low','Medium','High'], default: 'Medium' }
+  priority: { type: String, enum: ['Low','Medium','High'], default: 'Medium' },
+
+  reminderSent: { type: Boolean, default: false }
+
 }, { timestamps: true });
 
 
