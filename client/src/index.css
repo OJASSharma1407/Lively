@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Dark mode comprehensive styles */
+.dark {
+  background-color: #0f0f0f !important;
+  color: #f5f5f5 !important;
+}
+
+.dark body {
+  background-color: #0f0f0f !important;
+  color: #f5f5f5 !important;
+}
+
+.dark #root {
+  background-color: #0f0f0f !important;
+}
+
+/* Background colors */
+.dark .bg-white {
+  background-color: #1a1a1a !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #111111 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1e1e1e !important;
+}
+
+.dark .bg-gray-200 {
+  background-color: #2a2a2a !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: #2d2d2d !important;
+}
+
+.dark .bg-gray-900 {
+  background-color: #1a1a1a !important;
+}
+
+/* Text colors with high contrast */
+.dark .text-gray-900 {
+  color: #f5f5f5 !important;
+}
+
+.dark .text-gray-800 {
+  color: #e5e5e5 !important;
+}
+
+.dark .text-gray-700 {
+  color: #d5d5d5 !important;
+}
+
+.dark .text-gray-600 {
+  color: #c0c0c0 !important;
+}
+
+.dark .text-gray-500 {
+  color: #a0a0a0 !important;
+}
+
+.dark .text-gray-400 {
+  color: #909090 !important;
+}
+
+.dark .text-black {
+  color: #f5f5f5 !important;
+}
+
+/* Border colors */
+.dark .border-gray-200 {
+  border-color: #404040 !important;
+}
+
+.dark .border-gray-300 {
+  border-color: #505050 !important;
+}
+
+.dark .border-gray-400 {
+  border-color: #606060 !important;
+}
+
+.dark .border {
+  border-color: #404040 !important;
+}
+
+/* Form elements */
+.dark input, .dark textarea, .dark select {
+  background-color: #1e1e1e !important;
+  color: #f5f5f5 !important;
+  border-color: #505050 !important;
+}
+
+.dark input::placeholder, .dark textarea::placeholder {
+  color: #909090 !important;
+}
+
+.dark input:focus, .dark textarea:focus, .dark select:focus {
+  background-color: #2a2a2a !important;
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+/* Buttons */
+.dark .bg-blue-600 {
+  background-color: #2563eb !important;
+}
+
+.dark .bg-blue-500 {
+  background-color: #3b82f6 !important;
+}
+
+.dark .bg-red-600 {
+  background-color: #dc2626 !important;
+}
+
+.dark .bg-green-600 {
+  background-color: #16a34a !important;
+}
+
+.dark .bg-yellow-500 {
+  background-color: #eab308 !important;
+}
+
+.dark .bg-purple-600 {
+  background-color: #9333ea !important;
+}
+
+.dark .bg-indigo-600 {
+  background-color: #4f46e5 !important;
+}
+
+/* Hover states */
+.dark .hover\:bg-gray-100:hover {
+  background-color: #2a2a2a !important;
+}
+
+.dark .hover\:bg-gray-200:hover {
+  background-color: #3a3a3a !important;
+}
+
+.dark .hover\:bg-gray-50:hover {
+  background-color: #1e1e1e !important;
+}
+
+/* Shadows */
+.dark .shadow-sm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+.dark .shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow-md {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3) !important;
+}
+
+.dark .shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Cards and containers */
+.dark .rounded-lg {
+  background-color: #1a1a1a;
+  border: 1px solid #404040;
+}
+
+/* Modal and overlay */
+.dark .bg-black\/50 {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Calendar specific */
+.dark .calendar-day {
+  background-color: #1e1e1e !important;
+  color: #f5f5f5 !important;
+  border-color: #404040 !important;
+}
+
+.dark .calendar-day:hover {
+  background-color: #2a2a2a !important;
+}
+
+.dark .calendar-today {
+  background-color: #1e40af !important;
+  color: white !important;
+}
+
+/* Task cards */
+.dark .task-card {
+  background-color: #1a1a1a !important;
+  border-color: #404040 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Sidebar */
+.dark .sidebar {
+  background-color: #111111 !important;
+  border-color: #404040 !important;
+}
+
+/* Header */
+.dark .header {
+  background-color: #1a1a1a !important;
+  border-color: #404040 !important;
+}
+
+/* Dropdown menus */
+.dark .dropdown-menu {
+  background-color: #1a1a1a !important;
+  border-color: #404040 !important;
+  color: #f5f5f5 !important;
+}
+
+.dark .dropdown-item:hover {
+  background-color: #2a2a2a !important;
+}
+
+/* Progress bars */
+.dark .progress-bar {
+  background-color: #2a2a2a !important;
+}
+
+/* Charts and analytics */
+.dark .chart-container {
+  background-color: #1a1a1a !important;
+  color: #f5f5f5 !important;
+}
+
+/* Notifications */
+.dark .notification {
+  background-color: #1a1a1a !important;
+  border-color: #404040 !important;
+  color: #f5f5f5 !important;
+}
+
+/* AI Chat */
+.dark .chat-message {
+  background-color: #1e1e1e !important;
+  color: #f5f5f5 !important;
+}
+
+.dark .chat-input {
+  background-color: #1a1a1a !important;
+  border-color: #505050 !important;
+  color: #f5f5f5 !important;
+}
+
+/* Tables */
+.dark table {
+  background-color: #1a1a1a !important;
+  color: #f5f5f5 !important;
+}
+
+.dark th {
+  background-color: #2a2a2a !important;
+  color: #f5f5f5 !important;
+  border-color: #404040 !important;
+}
+
+.dark td {
+  border-color: #404040 !important;
+  color: #e5e5e5 !important;
+}
+
+.dark tr:hover {
+  background-color: #2a2a2a !important;
+}
+
+/* Loading states */
+.dark .loading {
+  background-color: #2a2a2a !important;
+}
+
+/* Transitions */
+* {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans transition-colors;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-6;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+  }
+}

@@ -1,3 +1,5 @@
+const mongoose = require('mongoose');
+
 const progressTrackingSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   weeklyTasksCompleted: { type: Number, default: 0 },
