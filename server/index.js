@@ -7,7 +7,7 @@ const reminderJob = require('./cron/remainder');
 const { missedTaskImmediateJob, missedTaskFinalJob } = require('./cron/missedNotification');
 const generateRecurringTasks = require('./cron/recurringTasks');
 const updateProgressTracking = require('./cron/progressTracking');
-const port = process.env. PORT; 
+const port = process.env.PORT; 
 const mongo_Url = process.env.MONGO_URL;
 const app = express();
 //Middle ware
