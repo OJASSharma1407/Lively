@@ -5,6 +5,7 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 
 // Pages
+import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -53,8 +54,8 @@ function AppRoutes() {
           </PublicRoute>
         } />
         
-        {/* Default redirect */}
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Landing page */}
+        <Route path="/" element={<Landing />} />
         
         {/* Protected Routes */}
         <Route path="/dashboard" element={

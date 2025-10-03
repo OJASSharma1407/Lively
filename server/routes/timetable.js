@@ -127,6 +127,7 @@ router.post('/save-tasks', auth, async (req, res) => {
                 
                 const conflictingTask = await Tasks.findOne({
                     userId: userId,
+                    status: { $ne: 'Completed' }, // Exclude completed tasks
                     $and: [
                         { startTime: { $lt: new Date(taskData.endTime) } },
                         { endTime: { $gt: new Date(taskData.startTime) } },

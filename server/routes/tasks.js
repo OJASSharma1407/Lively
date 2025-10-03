@@ -50,6 +50,7 @@ router.post(
         
         const overlappingTasks = await Tasks.find({
           userId: req.user.id,
+          status: { $ne: 'Completed' }, // Exclude completed tasks
           startTime: { $exists: true },
           endTime: { $exists: true },
           $and: [
@@ -136,6 +137,7 @@ router.put('/update-task/:id',fetchuser,async(req,res)=>{
           const overlappingTasks = await Tasks.find({
             userId: req.user.id,
             _id: { $ne: taskID }, // Exclude current task
+            status: { $ne: 'Completed' }, // Exclude completed tasks
             startTime: { $exists: true },
             endTime: { $exists: true },
             $and: [

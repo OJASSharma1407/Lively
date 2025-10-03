@@ -36,15 +36,17 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-blue-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
         {/* Logo & Title */}
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mb-4">
-            <span className="text-2xl font-bold text-white">L</span>
-          </div>
-          <h1 className="text-3xl font-bold text-gray-900">Welcome back</h1>
-          <p className="text-gray-600 mt-2">Sign in to your Lively account</p>
+          <Link to="/" className="inline-block">
+            <div className="mx-auto w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mb-4 hover:bg-blue-700 transition-colors">
+              <span className="text-2xl font-bold text-white">L</span>
+            </div>
+          </Link>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Welcome back</h1>
+          <p className="text-gray-600 dark:text-gray-400 mt-2">Sign in to your Lively account</p>
         </div>
 
         {/* Login Form */}
@@ -107,10 +109,15 @@ const Login = () => {
 
           {/* Register Link */}
           <div className="mt-6 text-center">
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               Don't have an account?{' '}
-              <Link to="/register" className="text-primary-500 hover:text-primary-600 font-medium">
+              <Link to="/register" className="text-blue-600 hover:text-blue-700 font-medium">
                 Sign up
+              </Link>
+            </p>
+            <p className="text-gray-500 dark:text-gray-500 text-sm mt-2">
+              <Link to="/" className="hover:text-gray-700 dark:hover:text-gray-300">
+                ← Back to home
               </Link>
             </p>
           </div>

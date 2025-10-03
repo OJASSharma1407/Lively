@@ -11,7 +11,11 @@ const port = process.env. PORT;
 const mongo_Url = process.env.MONGO_URL;
 const app = express();
 //Middle ware
-app.use(cors());
+app.use(cors({
+  origin: '*',
+  credentials: true
+}));
+
 app.use(express.json());
 //DataBase
 mongoose.connect(mongo_Url).then(()=>{
