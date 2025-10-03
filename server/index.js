@@ -11,10 +11,22 @@ const port = process.env.PORT;
 const mongo_Url = process.env.MONGO_URL;
 const app = express();
 //Middle ware
+console.log('Configuring CORS for origin:', "https://lively-nkre.vercel.app");
 app.use(cors({
-  origin: "https://lively-nkre.vercel.app", // your Vercel frontend URL
-  credentials: true
+  origin: "https://lively-nkre.vercel.app",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'auth-token', 'Authorization'],
+  credentials: false
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin}`);
+  next();
+});
 
 app.use(express.json());
 //DataBase
@@ -30,6 +42,11 @@ missedTaskImmediateJob();
 missedTaskFinalJob();
 generateRecurringTasks();
 updateProgressTracking();
+
+// Health check endpoint
+app.get('/', (req, res) => {
+  res.json({ message: 'Lively API is running!', timestamp: new Date().toISOString() });
+});
 
 //Routes
 app.use('/user',require('./routes/userAuth'));
