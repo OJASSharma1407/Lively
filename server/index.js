@@ -12,8 +12,10 @@ const mongo_Url = process.env.MONGO_URL;
 const app = express();
 //Middle ware
 app.use(cors({
-  origin: '*',
-  credentials: true
+  origin: ['https://lively-nkre.vercel.app', 'http://localhost:3000'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'auth-token', 'Authorization']
 }));
 
 app.use(express.json());
