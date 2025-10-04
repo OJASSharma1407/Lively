@@ -16,13 +16,16 @@ const mongo_Url = process.env.MONGO_URL;
 // ---------------- CORS FIX ---------------- //
 const allowedOrigins = [
   "http://localhost:3000",             // local dev
-  "https://lively-swart.vercel.app"     // Vercel frontend
+  "https://lively-swart.vercel.app",    // Vercel frontend
+  /^https:\/\/lively-.*\.vercel\.app$/   // All Vercel deployments
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin) return callback(null, true); // allow Postman or curl
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.some(allowed => 
+      typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+    )) {
       return callback(null, true);
     } else {
       return callback(new Error("CORS blocked: " + origin), false);
