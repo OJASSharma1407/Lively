@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { authAPI } from '../utils/api';
+import { authAPI, userAPI } from '../utils/api';
 
 const AuthContext = createContext();
 
@@ -21,24 +21,13 @@ export const AuthProvider = ({ children }) => {
       if (token) {
         try {
           // Verify token is still valid
-          const response = await fetch('http://localhost:8000/user/profile', {
-            headers: {
-              'auth-token': token
-            }
-          });
-          
-          if (response.ok) {
-            setUser({ token });
-          } else {
-            // Token is invalid, remove it
-            localStorage.removeItem('token');
-            setToken(null);
-            setUser(null);
-          }
+          await userAPI.getProfile();
+          setUser({ token });
         } catch (error) {
-          // Network error, keep token but don't set user
-          console.error('Auth check failed:', error);
-          setUser({ token }); // Assume token is valid if network fails
+          // Token is invalid, remove it
+          localStorage.removeItem('token');
+          setToken(null);
+          setUser(null);
         }
       }
       setLoading(false);
