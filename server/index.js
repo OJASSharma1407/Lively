@@ -16,7 +16,7 @@ const mongo_Url = process.env.MONGO_URL;
 // ---------------- CORS FIX ---------------- //
 const allowedOrigins = [
   "http://localhost:3000",             // local dev
-  "https://lively-nkre.vercel.app"     // Vercel frontend
+  "https://lively-swart.vercel.app"     // Vercel frontend
 ];
 
 app.use(cors({
