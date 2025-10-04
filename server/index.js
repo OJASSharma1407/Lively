@@ -33,8 +33,6 @@ app.use(cors({
   credentials: true
 }));
 
-// Preflight support
-app.options('*', cors());
 
 // ---------------- Middleware ---------------- //
 app.use(express.json());
