@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Plus, CheckCircle, Clock, AlertCircle, Calendar, Sparkles } from 'lucide-react';
 import { tasksAPI, progressAPI, aiAPI } from '../utils/api';
 import toast from 'react-hot-toast';
+import AddTaskModal from '../components/AddTaskModal';
 
 const Dashboard = () => {
   const [todayTasks, setTodayTasks] = useState([]);
   const [weeklyStats, setWeeklyStats] = useState(null);
   const [aiInsights, setAiInsights] = useState('');
   const [loading, setLoading] = useState(true);
+  const [showAddModal, setShowAddModal] = useState(false);
 
   useEffect(() => {
     fetchDashboardData();
@@ -149,7 +151,10 @@ const Dashboard = () => {
       <div className="card">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Today's Tasks</h2>
-          <button className="btn-primary flex items-center">
+          <button 
+            onClick={() => setShowAddModal(true)}
+            className="btn-primary flex items-center"
+          >
             <Plus className="w-4 h-4 mr-2" />
             Add Task
           </button>
@@ -210,6 +215,17 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+
+      {/* Add Task Modal */}
+      {showAddModal && (
+        <AddTaskModal
+          onClose={() => setShowAddModal(false)}
+          onTaskAdded={() => {
+            setShowAddModal(false);
+            fetchDashboardData();
+          }}
+        />
+      )}
     </div>
   );
 };
