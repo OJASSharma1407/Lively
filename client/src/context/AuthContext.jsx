@@ -15,32 +15,38 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [authChecked, setAuthChecked] = useState(false);
 
   useEffect(() => {
+    if (authChecked) return; // Prevent multiple auth checks
+    
     const checkAuth = async () => {
+      console.log('Checking auth, token exists:', !!token);
       if (token) {
         try {
           // Verify token is still valid
           const response = await userAPI.getProfile();
+          console.log('Auth check successful');
           setUser({ token, ...response.data });
         } catch (error) {
-          console.log('Auth check failed:', error.response?.status);
-          // Only clear token if it's actually invalid (401/403)
-          if (error.response?.status === 401 || error.response?.status === 403) {
-            localStorage.removeItem('token');
-            setToken(null);
-            setUser(null);
-          } else {
-            // Network error - keep token but don't set user
-            console.log('Network error, keeping token');
-          }
+          console.log('Auth check failed:', {
+            status: error.response?.status,
+            message: error.response?.data?.error || error.message
+          });
+          // Clear invalid token
+          localStorage.removeItem('token');
+          setToken(null);
+          setUser(null);
         }
+      } else {
+        console.log('No token found');
       }
       setLoading(false);
+      setAuthChecked(true);
     };
     
     checkAuth();
-  }, []);
+  }, [token, authChecked]);
 
   const login = async (email, password) => {
     try {
@@ -50,6 +56,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem('token', newToken);
       setToken(newToken);
       setUser({ token: newToken });
+      setAuthChecked(false); // Reset to allow new auth check
       
       return { success: true };
     } catch (error) {
@@ -82,6 +89,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     setToken(null);
     setUser(null);
+    setAuthChecked(true); // Mark as checked to prevent auth loop
   };
 
   const value = {
