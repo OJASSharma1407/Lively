@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
           await userAPI.getProfile();
           setUser({ token });
         } catch (error) {
+          console.log('Auth check failed, clearing token:', error.message);
           // Token is invalid, remove it
           localStorage.removeItem('token');
           setToken(null);
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     };
     
     checkAuth();
-  }, [token]);
+  }, []);
 
   const login = async (email, password) => {
     try {
