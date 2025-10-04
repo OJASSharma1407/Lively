@@ -21,14 +21,19 @@ export const AuthProvider = ({ children }) => {
       if (token) {
         try {
           // Verify token is still valid
-          await userAPI.getProfile();
-          setUser({ token });
+          const response = await userAPI.getProfile();
+          setUser({ token, ...response.data });
         } catch (error) {
-          console.log('Auth check failed, clearing token:', error.message);
-          // Token is invalid, remove it
-          localStorage.removeItem('token');
-          setToken(null);
-          setUser(null);
+          console.log('Auth check failed:', error.response?.status);
+          // Only clear token if it's actually invalid (401/403)
+          if (error.response?.status === 401 || error.response?.status === 403) {
+            localStorage.removeItem('token');
+            setToken(null);
+            setUser(null);
+          } else {
+            // Network error - keep token but don't set user
+            console.log('Network error, keeping token');
+          }
         }
       }
       setLoading(false);

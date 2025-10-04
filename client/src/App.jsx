@@ -65,6 +65,9 @@ function AppRoutes() {
         {/* Landing page */}
         <Route path="/" element={<Landing />} />
         
+        {/* Catch all - redirect to landing */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+        
         {/* Protected Routes */}
         <Route path="/dashboard" element={
           <ProtectedRoute>
