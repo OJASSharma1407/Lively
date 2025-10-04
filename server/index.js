@@ -13,7 +13,7 @@ const app = express();
 //Middle ware
 console.log('Configuring CORS for origin:', "https://lively-nkre.vercel.app");
 app.use(cors({
-  origin: "https://lively-nkre.vercel.app",
+  origin: "https://lively-nkre.vercel.app/",
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'auth-token', 'Authorization'],
   credentials: false
